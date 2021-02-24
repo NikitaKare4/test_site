@@ -1,0 +1,41 @@
+Установка Apache PHP MySQL и phpMyAdmin
+- Apache: https://www.apachelounge.com/download/
+- PHP: https://windows.php.net/download#php-7.3
+- MySQL:https://dev.mysql.com/downloads/mysql/
+- phpMyAdmin: https://www.phpmyadmin.net/
+
+База данных:
+'файл для загрузки' => site.sql
+'host' => localhost
+'Название базы данных' => site
+'Логин' => root
+'Пароль' => 123456
+
+C:\Windows\System32\drivers\etc
+
+hosts 
+
+127.0.0.1  		test_site
+127.0.0.1  		www.test_site
+
+C:\works\Apache24\conf\extra
+httpd-vhosts
+
+<VirtualHost *:80>
+ServerAdmin webmaster@test_site
+DocumentRoot "${SRVROOT}/docs/test_site"
+ServerName test_site
+ServerAlias www.test_site
+ErrorLog "logs/test_site-error.log"
+CustomLog "logs/test_site-access.log" common
+<Directory "${SRVROOT}/docs/test_site">
+Options Indexes FollowSymLinks
+AllowOverride None
+Require all granted
+</Directory>
+<IfModule dir_module>
+DirectoryIndex index.php index.html
+</IfModule>
+</VirtualHost>
+
+
